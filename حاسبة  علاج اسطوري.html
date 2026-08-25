@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070d">
+<title>حاسبة العلاج الأسطوري — انتقام السلاطين</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dawod/thmanyah-font-web/index.css">
+<style>
+:root{--bg:#05070d;--panel:#0c1120;--gold:#d7a53b;--gold2:#ffe08a;--line:#5a431c;--txt:#f7f2e5;--muted:#aaa69b;--green:#65d36c;--red:#e65d52;--blue:#68a8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#26344d 0,#0b0e17 30%,#04050a 78%);color:var(--txt);font-family:"Thmanyah Sans",Tahoma,Arial,sans-serif}.app{max-width:1200px;margin:auto;padding-bottom:30px}
+.hero{height:250px;position:relative;overflow:hidden;background-image:linear-gradient(180deg,rgba(4,6,12,.05),rgba(4,6,12,.75)),url("assets/hero.png");background-size:cover;background-position:center 22%;border-bottom:1px solid #78571f}.heroContent{position:absolute;z-index:1;inset:0;display:flex;flex-direction:column;align-items:center;padding-top:24px;text-align:center}.kicker{font-size:13px;color:#f4ce70}.hero h1{font-family:"Thmanyah Serif Display","Thmanyah Sans",serif;font-size:clamp(35px,6vw,62px);margin:4px 0;color:#ffe08a;text-shadow:0 4px 20px #000,0 0 15px #8e5f17}.hero p{margin:0;font-size:18px;color:#eee}
+.nav{position:sticky;top:0;z-index:50;display:flex;gap:7px;padding:10px;background:rgba(5,7,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid #302a20;overflow-x:auto}.nav button{min-width:145px;flex:1;background:#0c1220;border:1px solid #3a352b;color:#c7c3ba;border-radius:12px;padding:11px 8px;cursor:pointer}.nav button.active{background:linear-gradient(#4d3816,#21180b);border-color:var(--gold);color:#fff0ad}
+main{padding:14px}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{grid-column:span 12;background:linear-gradient(145deg,#111829,#090d17);border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 12px 32px #0006}.col4{grid-column:span 4}.col6{grid-column:span 6}.col8{grid-column:span 8}.col12{grid-column:span 12}
+.title{margin:0 0 13px;padding-bottom:10px;border-bottom:1px solid #3c311e;color:#f4d176;font-size:22px}.row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.label{display:block;color:#bdb8ad;font-size:14px;margin-bottom:5px}
+input,select{width:100%;background:#070b14;color:#fff;border:1px solid #4b412c;border-radius:10px;padding:11px;outline:0}input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px #d7a53b25}.qty{display:grid;grid-template-columns:1fr 100px;gap:7px}.unit{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.unit button,.seg button{border:1px solid #40382a;background:#0a0e18;color:#aaa;border-radius:8px;cursor:pointer}.unit button.active,.seg button.active{background:#4b3511;border-color:var(--gold);color:#ffe39a}.seg{display:flex;gap:5px}.seg button{flex:1;padding:10px;border-radius:10px}.primary{width:100%;border:1px solid #f3ca62;background:linear-gradient(#e5b94f,#8d5b15);color:#1b1205;border-radius:11px;padding:13px;font-weight:900;cursor:pointer;margin-top:12px}.secondary{width:100%;border:1px solid #675a3c;background:#15130e;color:#eed58d;border-radius:11px;padding:11px;cursor:pointer;margin-top:8px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.kpi{text-align:center;padding:12px;background:#080c15;border:1px solid #373329;border-radius:12px}.kpi span{display:block;color:#aaa69d;font-size:13px}.kpi b{display:block;font-size:21px;margin-top:4px}.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}.res{padding:10px;background:#080c15;border:1px solid #373329;border-radius:11px}.res strong{display:block;color:#e9ca74;font-size:14px}.res em{font-style:normal;font-size:18px}.formula,.note{margin-top:11px;padding:10px;border-radius:10px;background:#080b12;border:1px dashed #514326;color:#c9c1ad;font-size:13px}.alert{margin-top:11px;padding:11px;border-radius:10px;background:#32151a;border:1px solid #70433c;color:#ffb3aa}.ok{background:#102416;border-color:#35683c;color:#a1f0a6}.highlight{border-color:#c69b3b;box-shadow:0 0 20px #c69b3b18}
+.tablewrap{overflow:auto;border:1px solid #383227;border-radius:11px}.tablewrap table{width:100%;min-width:760px;border-collapse:collapse}.tablewrap th,.tablewrap td{padding:9px;text-align:center;border-bottom:1px solid #2a2924}.tablewrap th{color:#f2d178;background:#15130f}.tablewrap td{color:#ddd}.sectionSep{height:1px;background:#332a1b;margin:16px 0}
+footer{text-align:center;color:#777;padding:20px;font-size:12px}
+@media(max-width:760px){.hero{height:190px;background-position:center top}.nav button{min-width:130px}.grid{display:block}.card{margin-bottom:11px}.row,.row3{grid-template-columns:1fr}.resources{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:1fr 1fr}.hero h1{font-size:39px}}
+@media(max-width:430px){main{padding:8px}.card{padding:12px}.resources,.kpis{grid-template-columns:1fr}.title{font-size:20px}.qty{grid-template-columns:1fr 88px}}
+
+.typeGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:7px}
+.typeCheck{display:flex;align-items:center;gap:8px;padding:10px;background:#080c15;border:1px solid #373329;border-radius:10px;color:#ddd;cursor:pointer}
+.typeCheck input{width:auto;accent-color:#d7a53b}.typeCheck:has(input:checked){border-color:#c69b3b;background:#21180b;color:#ffe39a}
+.resourceResult{background:#080c15;border:1px solid #373329;border-radius:13px;padding:13px;margin-bottom:10px}
+.resourceResult h3{margin:0 0 10px;color:#f1cf75;font-size:19px}
+.resourceResult .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.resourceResult .mini div{background:#0e1421;border-radius:9px;padding:9px;text-align:center}
+.resourceResult .mini span{display:block;color:#999;font-size:12px}.resourceResult .mini b{display:block;margin-top:3px;font-size:17px}
+@media(max-width:760px){.typeGrid{grid-template-columns:1fr}.resourceResult .mini{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.resourceResult .mini{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero"><div class="heroContent"><div class="kicker">⚔ حاسبة الحرب والعلاج والموارد ⚔</div><h1>حاسبة العلاج الأسطوري</h1><p>— لعبة انتقام السلاطين —</p></div></header>
+<nav class="nav">
+<button class="active" data-page="heal">🛡️ حاسبة العلاج</button><button data-page="castle">🏰 فريق القلاع</button><button data-page="maqam">👑 فريق المقام</button><button data-page="resources">💎 الموارد</button><button data-page="army">⚔️ جيشي كامل</button><button data-page="table">📜 جدول العلاج</button>
+</nav>
+<main>
+
+<section id="heal" class="page active"><div class="grid">
+<div class="card col6"><h2 class="title">⚔ معلومات الجيش</h2>
+<div class="row"><div><span class="label">نوع الجيش</span><div class="seg" id="armySeg"><button class="active" data-v="inf">مشاة</button><button data-v="arch">رماة</button></div></div>
+<div><span class="label">المستوى</span><div class="seg" id="levelSeg"><button class="active" data-v="gold">مذهب</button><button data-v="armored">مدرع</button><button data-v="super">خارق</button></div></div></div>
+<div style="margin-top:11px"><span class="label">عدد الجنود</span><div class="qty"><input id="troopsN" inputmode="decimal" placeholder="مثال: 720"><div class="unit" id="troopsU"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div><div class="note">اكتب الرقم فقط واختر الوحدة: K ألف • M مليون • B مليار.</div></div>
+<button class="primary" onclick="calcHeal()">احسب تكلفة العلاج ⚔</button></div>
+<div class="card col6"><h2 class="title">📊 نتائج العلاج</h2><div class="kpis"><div class="kpi"><span>الجنود</span><b id="rTroops">—</b></div><div class="kpi"><span>عدد الملايين</span><b id="rM">—</b></div><div class="kpi"><span>مدة العلاج</span><b id="rTime">—</b></div></div><div class="resources" id="costs"></div><div id="healMsg"></div></div>
+</div></section>
+
+<section id="castle" class="page"><div class="grid">
+<div class="card col4"><h2 class="title">🏰 فريق القلاع</h2>
+<div class="row"><div><span class="label">مدة الحرب</span><select id="castleHours"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option selected>12</option></select></div><div><span class="label">الأفواج / ساعة</span><input id="castleRate" type="number" value="40" min="1"></div></div>
+<div style="margin-top:10px"><span class="label">حجم الفيلق</span><div class="qty"><input id="legionN" inputmode="decimal" placeholder="مثال: 1.5"><div class="unit" id="legionU"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></div>
+<div class="row" style="margin-top:10px"><div><span class="label">نوع الجيش</span><select id="castleArmy"><option value="inf">مشاة</option><option value="arch">رماة</option></select></div><div><span class="label">المستوى</span><select id="castleLevel"><option value="gold">مذهب</option><option value="armored">مدرع</option><option value="super">خارق</option></select></div></div>
+<button class="primary" onclick="calcCastle()">احسب فريق القلاع</button></div>
+<div class="card col8"><h2 class="title">⚔ نتيجة فريق القلاع</h2><div class="kpis"><div class="kpi"><span>إجمالي الأفواج</span><b id="cLegions">—</b></div><div class="kpi"><span>إجمالي الجنود</span><b id="cTroops">—</b></div><div class="kpi"><span>مدة الحرب</span><b id="cHours">—</b></div></div><div class="resources" id="castleCosts"></div><div id="castleMsg"></div></div>
+</div></section>
+
+<section id="maqam" class="page"><div class="grid">
+<div class="card col4"><h2 class="title">👑 فريق المقام</h2><div class="note">نفس نظام فريق القلاع، لكن المقام يلعب <b>بالمذهب</b> وتكلفة العلاج تُحسب مباشرة من <b>جدول المذهب</b> بدون خصم.</div>
+<div class="row"><div><span class="label">مدة اللعب</span><select id="maqamHours"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option selected>12</option></select></div><div><span class="label">الأفواج / ساعة</span><input id="maqamRate" type="number" value="40" min="1"></div></div>
+<div style="margin-top:10px"><span class="label">حجم الفيلق</span><div class="qty"><input id="maqamLegionN" inputmode="decimal" placeholder="مثال: 1.5"><div class="unit" id="maqamLegionU"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></div>
+<div style="margin-top:10px"><span class="label">نوع الجيش</span><div class="seg" id="maqamArmy"><button class="active" data-v="inf">مشاة</button><button data-v="arch">رماة</button></div></div>
+<button class="primary" onclick="calcMaqam()">احسب تكلفة فريق المقام 👑</button></div>
+<div class="card col8"><h2 class="title">📊 نتيجة فريق المقام</h2><div class="kpis"><div class="kpi"><span>إجمالي الأفواج</span><b id="mLegions">—</b></div><div class="kpi"><span>إجمالي الجنود</span><b id="mTroops">—</b></div><div class="kpi"><span>المدة</span><b id="mHours">—</b></div></div><div class="resources" id="maqamCosts"></div><div class="formula">الحساب: الساعات × الأفواج/ساعة = الأفواج الكلية، ثم الأفواج × حجم الفيلق = الجنود. التكلفة تُحسب مباشرة من صف المذهب في جدول العلاج.</div></div>
+</div></section>
+
+<section id="resources" class="page"><div class="grid">
+<div class="card col4"><h2 class="title">💎 مورد محدد — تحليل لكل نوع</h2>
+<div class="note">حدد نوعًا واحدًا أو أكثر، ثم اختر المورد واكتب كميته. الحاسبة تستعمل <b>جدول العلاج نفسه</b> وتعطيك لكل نوع: تكلفة 1M، عدد الملايين التي يغطيها المورد، عدد الجنود، مدة العلاج، وساعات تغطية الحرب.</div>
+
+<div style="margin-top:11px"><span class="label">نوع الجيش والمستوى</span>
+<div class="seg" style="margin-bottom:7px"><button type="button" onclick="selectAllResourceTypes()">تحديد الكل</button><button type="button" onclick="clearResourceTypes()">مسح الكل</button></div>
+<div id="resourceTypes" class="typeGrid">
+<label class="typeCheck"><input type="checkbox" value="gold-inf" checked><span>مذهب مشاة</span></label>
+<label class="typeCheck"><input type="checkbox" value="gold-arch"><span>مذهب رماة</span></label>
+<label class="typeCheck"><input type="checkbox" value="armored-inf"><span>مدرع مشاة</span></label>
+<label class="typeCheck"><input type="checkbox" value="armored-arch"><span>مدرع رماة</span></label>
+<label class="typeCheck"><input type="checkbox" value="super-inf"><span>خارق مشاة</span></label>
+<label class="typeCheck"><input type="checkbox" value="super-arch"><span>خارق رماة</span></label>
+</div></div>
+
+<div style="margin-top:12px"><span class="label">المورد المحدد</span>
+<select id="oneRes"><option value="5">ترياق</option><option value="6">نيزك</option><option value="0">قمح</option><option value="1">خشب</option><option value="2">حديد</option><option value="3">فضة</option><option value="4">بلور</option></select></div>
+
+<div style="margin-top:10px"><span class="label">كمية المورد</span>
+<div class="qty"><input id="oneResN" inputmode="decimal" placeholder="مثال: 20"><div class="unit" id="oneResU"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></div>
+
+<div class="sectionSep"></div><b style="color:#e8c96f">بيانات الحرب — اختيارية</b>
+<div class="row" style="margin-top:8px"><div><span class="label">الأفواج / ساعة</span><input id="oneRate" type="number" value="40" min="1"></div>
+<div><span class="label">حجم الفيلق</span><div class="qty"><input id="oneLegionN" inputmode="decimal" placeholder="1.5"><div class="unit" id="oneLegionU"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></div></div>
+
+<button class="primary" onclick="calcOneResource()">حلّل المورد 🎯</button>
+<button class="secondary" onclick="clearResourceAnalysis()">مسح النتيجة</button>
+</div>
+
+<div class="card col8"><h2 class="title">🎯 النتيجة — كل نوع على حدة</h2>
+<div id="resourceSummary"></div><div id="oneDetails"></div><div id="oneMsg"></div>
+</div>
+</div></section>
+
+<section id="army" class="page"><div class="grid">
+<div class="card col12"><h2 class="title">⚔️ تكلفة علاج جيشي كامل</h2><div class="note">حدد عدد جنود كل فئة على حدة. الحاسبة تحسب كل فئة من <b>جدول العلاج نفسه</b>، ثم تجمع كل الموارد في نتيجة واحدة. أي خانة فارغة = 0.</div>
+<div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>الفئة</th><th>مشاة</th><th>رماة</th></tr></thead><tbody>
+<tr><td>مذهب</td><td><div class="qty"><input id="fullGoldInf" inputmode="decimal" placeholder="0"><div class="unit" id="uFullGoldInf"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td><td><div class="qty"><input id="fullGoldArch" inputmode="decimal" placeholder="0"><div class="unit" id="uFullGoldArch"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td></tr>
+<tr><td>مدرع</td><td><div class="qty"><input id="fullArmInf" inputmode="decimal" placeholder="0"><div class="unit" id="uFullArmInf"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td><td><div class="qty"><input id="fullArmArch" inputmode="decimal" placeholder="0"><div class="unit" id="uFullArmArch"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td></tr>
+<tr><td>خارق</td><td><div class="qty"><input id="fullSuperInf" inputmode="decimal" placeholder="0"><div class="unit" id="uFullSuperInf"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td><td><div class="qty"><input id="fullSuperArch" inputmode="decimal" placeholder="0"><div class="unit" id="uFullSuperArch"><button data-u="K">K</button><button class="active" data-u="M">M</button><button data-u="B">B</button></div></div></td></tr>
+</tbody></table></div><button class="primary" onclick="calcFullArmy()">احسب تكلفة الجيش كامل ⚔</button></div>
+<div class="card col12 highlight"><h2 class="title">👑 الإجمالي النهائي</h2><div class="kpis"><div class="kpi"><span>إجمالي الجنود</span><b id="fullTroops">—</b></div><div class="kpi"><span>إجمالي وقت العلاج</span><b id="fullTime">—</b></div><div class="kpi"><span>عدد الملايين</span><b id="fullM">—</b></div></div><div class="resources" id="fullCosts"></div></div>
+</div></section>
+
+<section id="table" class="page"><div class="card"><h2 class="title">📜 جدول العلاج — المرجع الوحيد للحساب</h2><div class="tablewrap"><table><thead><tr><th>النوع</th><th>قمح</th><th>خشب</th><th>حديد</th><th>فضة</th><th>بلور</th><th>ترياق</th><th>نيزك</th></tr></thead><tbody id="priceTable"></tbody></table></div><div class="formula"><b>قاعدة الوقت:</b> 1M جندي = 36 ساعة علاج. <b>فريق المقام:</b> صف المذهب كاملًا بدون خصم. <b>فريق القلاع:</b> 40 فيلق/ساعة افتراضيًا ويمكن تغييره.</div></div></section>
+</main><footer>حاسبة العلاج الأسطوري • كل الحسابات تعتمد على جدول العلاج الظاهر أعلاه</footer>
+</div>
+
+<script>
+const R=['قمح','خشب','حديد','فضة','بلور','ترياق','نيزك'];
+const DATA={gold:{inf:[12e6,6e6,1.6e6,350e3,250e3,80e3,0],arch:[15e6,6.6e6,1.1e6,300e3,250e3,80e3,0]},armored:{inf:[12e6,6e6,1.6e6,350e3,250e3,0,50e3],arch:[15e6,6.6e6,1.1e6,300e3,250e3,0,50e3]},super:{inf:[12e6,6e6,1.6e6,350e3,250e3,0,0],arch:[15e6,6.6e6,1.1e6,300e3,250e3,0,0]}};
+let army='inf',level='gold',maqamArmy='inf';const $=id=>document.getElementById(id);const mult={K:1e3,M:1e6,B:1e9};
+function unit(id){return document.querySelector('#'+id+' .active')?.dataset.u||'M'}
+function qty(n,u){let x=Number($(n).value);return Number.isFinite(x)&&x>=0?x*mult[unit(u)]:0}
+function fmt(n){if(!Number.isFinite(n))return '—';let a=Math.abs(n);if(a>=1e9)return (n/1e9).toLocaleString('en-US',{maximumFractionDigits:3})+'B';if(a>=1e6)return (n/1e6).toLocaleString('en-US',{maximumFractionDigits:3})+'M';if(a>=1e3)return (n/1e3).toLocaleString('en-US',{maximumFractionDigits:2})+'K';return Math.round(n).toLocaleString('en-US')}
+function full(n){return Math.round(n).toLocaleString('en-US')}
+function timeText(h){return `${full(h)} ساعة ≈ ${(h/24).toFixed(2)} يوم ≈ ${(h/720).toFixed(2)} شهر`}
+function setSeg(id,cb){document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('active'));b.classList.add('active');cb(b.dataset.v)})}
+function setUnits(id){document.querySelectorAll('#'+id+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('active'));b.classList.add('active')})}
+setSeg('armySeg',v=>army=v);setSeg('levelSeg',v=>level=v);setSeg('maqamArmy',v=>maqamArmy=v);
+document.querySelectorAll('.unit').forEach(x=>setUnits(x.id));
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(b.dataset.page).classList.add('active')});
+function cost(l,a){return DATA[l][a]}
+function renderCosts(a,id){$(id).innerHTML=R.map((n,i)=>a[i]?`<div class="res"><strong>${n}</strong><em>${fmt(a[i])}</em></div>`:'').join('')}
+function calcHeal(){let t=qty('troopsN','troopsU');if(!t){$('healMsg').innerHTML='<div class="alert">اكتب العدد ثم اختر K أو M أو B.</div>';return}let c=cost(level,army),m=t/1e6,h=m*36;$('rTroops').textContent=fmt(t);$('rM').textContent=m.toLocaleString('en-US',{maximumFractionDigits:3});$('rTime').textContent=fmt(h);renderCosts(c.map(x=>x*m),'costs');$('healMsg').innerHTML='<div class="formula">مدة العلاج: '+timeText(h)+'<br>التكلفة محسوبة مباشرة من صف '+(level==='gold'?'مذهب':level==='armored'?'مدرع':'خارق')+' '+(army==='inf'?'مشاة':'رماة')+' في جدول العلاج.</div>'}
+function calcCastle(){let h=Number($('castleHours').value),rate=Number($('castleRate').value)||40,l=qty('legionN','legionU');if(!l){$('castleMsg').innerHTML='<div class="alert">حدد حجم الفيلق.</div>';return}let legs=h*rate,t=legs*l,c=cost($('castleLevel').value,$('castleArmy').value);$('cLegions').textContent=full(legs);$('cTroops').textContent=fmt(t);$('cHours').textContent=h+' ساعة';renderCosts(c.map(x=>x*t/1e6),'castleCosts');$('castleMsg').innerHTML='<div class="formula">الجنود = '+full(legs)+' فيلق × '+fmt(l)+' = '+fmt(t)+' جندي.</div>'}
+function calcMaqam(){let h=Number($('maqamHours').value),rate=Number($('maqamRate').value)||40,l=qty('maqamLegionN','maqamLegionU');if(!l){$('maqamCosts').innerHTML='<div class="alert">حدد حجم الفيلق.</div>';return}let legs=h*rate,t=legs*l,c=cost('gold',maqamArmy);$('mLegions').textContent=full(legs);$('mTroops').textContent=fmt(t);$('mHours').textContent=h+' ساعة';renderCosts(c.map(x=>x*t/1e6),'maqamCosts')}
+const TYPE_MAP={
+ 'gold-inf':{level:'gold',army:'inf',name:'مذهب مشاة'},
+ 'gold-arch':{level:'gold',army:'arch',name:'مذهب رماة'},
+ 'armored-inf':{level:'armored',army:'inf',name:'مدرع مشاة'},
+ 'armored-arch':{level:'armored',army:'arch',name:'مدرع رماة'},
+ 'super-inf':{level:'super',army:'inf',name:'خارق مشاة'},
+ 'super-arch':{level:'super',army:'arch',name:'خارق رماة'}
+};
+function selectedResourceTypes(){return [...document.querySelectorAll('#resourceTypes input:checked')].map(x=>x.value)}
+function selectAllResourceTypes(){document.querySelectorAll('#resourceTypes input').forEach(x=>x.checked=true)}
+function clearResourceTypes(){document.querySelectorAll('#resourceTypes input').forEach(x=>x.checked=false)}
+function calcOneResource(){
+  const idx=Number($('oneRes').value),available=qty('oneResN','oneResU'),types=selectedResourceTypes();
+  if(!available){$('oneMsg').innerHTML='<div class="alert">اكتب كمية المورد ثم اختر K أو M أو B.</div>';return}
+  if(!types.length){$('oneMsg').innerHTML='<div class="alert">حدد نوع جيش واحد على الأقل.</div>';return}
+  const rate=Math.max(1,Number($('oneRate').value)||40),legion=qty('oneLegionN','oneLegionU');
+  let html='',sum=0;
+  types.forEach(key=>{
+    const t=TYPE_MAP[key],row=cost(t.level,t.army),perM=row[idx];
+    let card='<div class="resourceResult"><h3>⚔ '+t.name+'</h3>';
+    if(!perM){card+='<div class="alert">المورد <b>'+R[idx]+'</b> غير موجود في تكلفة هذا النوع حسب جدول العلاج.</div></div>';html+=card;return}
+    const millions=available/perM,troops=millions*1e6,treatmentHours=millions*36,perHour=legion?rate*legion:0,hours=perHour?troops/perHour:0;
+    const fullCost=row.map(x=>x*millions);sum+=troops;
+    card+='<div class="mini">'+
+      '<div><span>المتوفر</span><b>'+fmt(available)+'</b></div>'+
+      '<div><span>تكلفة 1M من '+R[idx]+'</span><b>'+fmt(perM)+'</b></div>'+
+      '<div><span>يعالج</span><b>'+millions.toLocaleString("en-US",{maximumFractionDigits:3})+'M</b></div>'+
+      '<div><span>عدد الجنود</span><b>'+fmt(troops)+'</b></div>'+
+      '<div><span>مدة علاج العدد</span><b>'+fmt(treatmentHours)+' ساعة</b></div>'+
+      '<div><span>تغطية الحرب</span><b>'+(perHour?hours.toFixed(2)+' ساعة':'حدد الفيلق')+'</b></div>'+
+    '</div><div class="resources">'+R.map((n,i)=>fullCost[i]?'<div class="res"><strong>'+n+'</strong><em>'+fmt(fullCost[i])+'</em></div>':'').join('')+'</div>'+
+    '<div class="formula">إذا استُعملت '+fmt(available)+' من '+R[idx]+' لهذا النوع فقط، فهي تعالج <b>'+fmt(troops)+'</b> جندي. '+(perHour?'استهلاك الحرب = <b>'+fmt(perHour)+' جندي/ساعة</b> → تغطية ≈ <b>'+hours.toFixed(2)+' ساعة</b>.':'حدد حجم الفيلق لحساب ساعات الحرب.')+'</div></div>';
+    html+=card;
+  });
+  $('resourceSummary').innerHTML='<div class="kpis"><div class="kpi"><span>المورد المحدد</span><b>'+R[idx]+'</b></div><div class="kpi"><span>الأنواع المحددة</span><b>'+types.length+'</b></div><div class="kpi"><span>قدرة التحليل</span><b>'+fmt(sum)+'*</b></div></div><div class="note">* المجموع هنا يعرض القدرة لكل نوع بشكل منفصل، لأن نفس كمية المورد لا يمكن احتسابها مرتين في نفس الوقت.</div>';
+  $('oneDetails').innerHTML=html;$('oneMsg').innerHTML='';
+}
+function clearResourceAnalysis(){$('resourceSummary').innerHTML='';$('oneDetails').innerHTML='';$('oneMsg').innerHTML=''}
+const fullFields=[['fullGoldInf','uFullGoldInf','gold','inf'],['fullGoldArch','uFullGoldArch','gold','arch'],['fullArmInf','uFullArmInf','armored','inf'],['fullArmArch','uFullArmArch','armored','arch'],['fullSuperInf','uFullSuperInf','super','inf'],['fullSuperArch','uFullSuperArch','super','arch']];
+function calcFullArmy(){let totalT=0,totalC=[0,0,0,0,0,0,0],totalH=0;fullFields.forEach(([n,u,l,a])=>{let t=qty(n,u);totalT+=t;let m=t/1e6,c=cost(l,a);c.forEach((x,i)=>totalC[i]+=x*m);totalH+=m*36});$('fullTroops').textContent=fmt(totalT);$('fullM').textContent=(totalT/1e6).toLocaleString('en-US',{maximumFractionDigits:3})+'M';$('fullTime').textContent=fmt(totalH);renderCosts(totalC,'fullCosts')}
+function buildTable(){let rows=[];for(const lv of ['gold','armored','super'])for(const ar of ['inf','arch']){let label=(lv==='gold'?'مذهب':lv==='armored'?'مدرع':'خارق')+' '+(ar==='inf'?'مشاة':'رماة'),c=cost(lv,ar);rows.push('<tr><td>'+label+'</td>'+c.map(x=>'<td>'+(x?fmt(x):'—')+'</td>').join('')+'</tr>')}$('priceTable').innerHTML=rows.join('')}
+buildTable();
+</script>
+</body></html>
